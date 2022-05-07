@@ -1,0 +1,26 @@
+service: svelt-expressjs-e2e-example
+
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-southeast-2
+  
+    
+functions:
+  api:
+    handler: aws-handler.thisapp
+    events:
+      - httpApi: '*'
+
+package:
+  patterns:
+    - '!testdata/**'
+    - '!*.sql'
+    - '!*.MD'
+
+
+
+                      
+                    
+  
