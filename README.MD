@@ -1,4 +1,4 @@
-# Svelt end to end template app
+# Svelte - ExpressJs - PostgreSQL template app
 This is an end to end template application usind Svelte-kit, ExpressJs, Serverless.com and PostgreSQL to provide end to end examples of a working real world single page application.
 
 Everyting in this example is open source and free to use
