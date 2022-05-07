@@ -1,9 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import * as itemDB from './itemDBaccess.js';
 import serverless from 'serverless-http';
 
 const app = express();
+app.use(cors());
 app.use(express.json());   
+
 
   // return the full array of all the vehicles
   app.get('/api', function(req, res, next){
@@ -25,8 +28,8 @@ app.use(express.json());
 
  /* istanbul ignore next */
  if (!app.parent) {
-   app.listen(3000);
-   console.log('Express started on port http://localhost:3000');
+   app.listen(3001);
+   console.log('Express started on port http://localhost:3001/api');
  }
 
 
