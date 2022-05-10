@@ -1,5 +1,10 @@
  <script>
-   import { itemData, loadItems } from "../stores/item.js";
+// Svelte-simple-datatable
+//https://vincjo.fr/svelte-simple-datatables/?ref=madewithsvelte.com#/
+    import  ItemCreate  from "./item-create.svelte";
+
+
+    import { itemData, loadItems } from "../stores/item.js";
     import { Datatable } from 'svelte-simple-datatables';
     import { onMount } from "svelte";
     onMount(  loadItems);
@@ -7,7 +12,8 @@
         rowsPerPage: 10,
         scrollY: false,
         sortable: true,
-        pagination: true
+        pagination: true,
+        css: true
      };
     
     let rows
@@ -15,9 +21,10 @@
 
 <Datatable settings={settings} data={$itemData} bind:dataRows={rows}>
     <thead>
-        <th data-key="itemID">First Name</th>
-        <th data-key="name">Last Name</th>
-        <th data-key="quantity">Email</th>
+        <th data-key="itemID">Item ID</th>
+        <th data-key="name">Name</th>
+        <th data-key="description">Description</th>
+        <th data-key="quantity">Quantity</th>
     </thead>
     <tbody>
     {#if rows}
@@ -25,6 +32,7 @@
         <tr>
             <td>{row.itemID}</td>
             <td>{row.name}</td>
+            <td>{row.description}</td>
             <td>{row.quantity}</td>
         </tr>
         {/each}
@@ -33,8 +41,10 @@
 </Datatable>
 
 <style>
-    td{text-align:center;padding:10px 0}
+    td{text-align:left;padding:10px 0; padding-left: 10px;}
+    th{text-align:left;padding:10px 0; padding-left: 10px;}
+ 
 
-    .datatable{ height:fit-content;}
 </style>
 
+<ItemCreate />

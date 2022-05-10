@@ -2,10 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import * as itemDB from './itemDBaccess.js';
 import serverless from 'serverless-http';
+import bodyParser from 'body-parser';
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());   
+app.use(bodyParser.json());
+
 
 
   // return the full array of all the vehicles
@@ -19,11 +23,11 @@ app.use(express.json());
  });
 
  app.post('/api', function(req, res, next){
-    console.log('/app POST called' + JSON.stringify(  req.body )   );  
+    console.log('/app POST called ' + JSON.stringify(  req.body )   );  
 
-    const allItems = itemDB.getItems();
+    let cnt = itemDB.storeItem(req.body);
 
-    res.send( '{res:OK , req: '+JSON.stringify( allItems )+ '}' );
+    res.send( '{"result":"OK"}' );
  });
 
  /* istanbul ignore next */

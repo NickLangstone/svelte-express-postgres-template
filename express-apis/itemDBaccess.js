@@ -31,15 +31,16 @@ export function makeData(farmID, animaleID, bailNumber, startTime, milkYield) {
 
 
 // Store an item into the db
-const storeItem = async function (item) {
-    let numrowsupdated = await db('milkDataRaw').insert({
-        itemID: item.ID,
+export const storeItem = async function (item) {
+    let numrowsupdated = await db('items').insert({
+       
         name: item.name,
         description: item.description,
         quantity: item.quantity
     })
 
-    console.log('storeItem:  inserted = ' + numrowsupdated.rowCount)
+    console.log('storeItem:  inserted = ' + numrowsupdated.rowCount);
+    return numrowsupdated.rowCount;
 }
 
 // get the specific item by ID
