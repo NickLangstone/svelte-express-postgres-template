@@ -34,7 +34,8 @@ export const saveItem =  async function  saveItem( /** @type {any} */ id, /** @t
           },
         body: JSON.stringify(newitem)
         })
-    .then(function(res){ console.log( "res : " +  JSON.stringify( res)  )}  )
+    .then(function(res){ console.log( "res : " +  JSON.stringify( res)  );
+                          loadItems();}  )
     .then(function(data){ console.log( "data : " + JSON.stringify( data ) ) })
 
 	}

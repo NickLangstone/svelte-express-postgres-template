@@ -25,9 +25,10 @@ app.use(bodyParser.json());
  app.post('/api', function(req, res, next){
     console.log('/app POST called ' + JSON.stringify(  req.body )   );  
 
-    let cnt = itemDB.storeItem(req.body);
+    const  cnt = itemDB.storeItem(req.body)
+    .then( cnt => { res.send( '{"result":"OK" , "updated":'+cnt+'}' )});
 
-    res.send( '{"result":"OK"}' );
+   // res.send( '{"result":"OK"}' );
  });
 
  /* istanbul ignore next */
