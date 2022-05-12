@@ -1,17 +1,32 @@
 <script>
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+
+
+	import AfterLogin from '../components/AfterLogin.svelte';
+	import {  checkLoggedIn } from '../hooks/auth';
+	import LoginComponent from '../components/LoginComponent.svelte';
+
 </script>
 
-<Header />
+{#if checkLoggedIn() }
+	<Header />
+	<AfterLogin />
+	<main>
+		<slot />
 
-<main>
-	<slot />
-</main>
+		
+	</main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
+	<footer>
+		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	</footer>
+
+{:else }
+	<LoginComponent />
+{/if}
+
+
 
 <style>
 	main {
