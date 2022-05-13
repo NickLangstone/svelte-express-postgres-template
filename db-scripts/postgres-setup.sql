@@ -22,3 +22,17 @@ create TABLE "items" (
 );
 
 
+create TABLE "users" (
+    "username" varchar(200) primary key,
+    "passwordhash" VARCHAR(50) not null,
+    "role" VARCHAR(12) not null
+);
+
+create TABLE "oauthtoken" (
+    "id" varchar(200) primary key,
+    "token" VARCHAR(2000) not null,
+    "expires" timestamp not null
+);
+
+
+
